@@ -2,7 +2,7 @@ package com.bridgelabz.employeewage;
 
 import java.util.Scanner;
 
-class CalculateEmployeeWage{
+class EmpWageBuilder{
 
     Scanner sc = new Scanner(System.in);
 
@@ -18,7 +18,7 @@ class CalculateEmployeeWage{
     private int totalWage = 0;
     private int dayPresent = 0;
 
-    CalculateEmployeeWage(){
+    EmpWageBuilder(){
         System.out.println("Enter Company Name:");
         String companyName = sc.nextLine();
         this.companyName = companyName;
@@ -44,6 +44,10 @@ class CalculateEmployeeWage{
         this.totalWorkHour = totalWorkHour;
     }
 
+    public void setTotalWage(int totalWage) {
+        this.totalWage = totalWage;
+    }
+
     public void totalWage(){
 
         while (dayCount<=totalWorkDay  && hourCount<=totalWorkHour) {
@@ -53,16 +57,26 @@ class CalculateEmployeeWage{
 
             switch (attendance) {
                 case 1:
-                    System.out.println("Employee is present Full Time");
-                    hourCount = hourCount + fullDayHour;
-                    dailyWage = wagePerHour * fullDayHour;
-                    dayPresent++;
+
+                    if(hourCount + fullDayHour <= totalWorkHour){
+
+                        System.out.println("Employee is present Full Time");
+                        hourCount = hourCount + fullDayHour;
+                        dailyWage = wagePerHour * fullDayHour;
+                        dayPresent++;
+
+                    }
                     break;
                 case 2:
-                    System.out.println("Employee is present Part Time");
-                    hourCount = hourCount + partDayHour;
-                    dailyWage = wagePerHour * partDayHour;
-                    dayPresent++;
+
+                    if(hourCount + partDayHour <= totalWorkHour){
+
+                        System.out.println("Employee is present Part Time");
+                        hourCount = hourCount + partDayHour;
+                        dailyWage = wagePerHour * partDayHour;
+                        dayPresent++;
+
+                    }
                     break;
                 default:
                     System.out.println("Employee is absent");
@@ -77,6 +91,7 @@ class CalculateEmployeeWage{
                 + hourCount + " hours and \n"+
                 "earned total wages of "+ totalWage);
 
+        setTotalWage(totalWage);
     }
 }
 
@@ -86,18 +101,18 @@ public class EmployeeWage {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        CalculateEmployeeWage[] cew;
+        EmpWageBuilder[] ewb;
 
         System.out.println("Welcome to Employee Wage Computation Program");
 
         System.out.println("How may company's details would you like to add ?");
         int num = sc.nextInt();
 
-        cew = new CalculateEmployeeWage[num];
+        ewb = new EmpWageBuilder[num];
 
         for(int i=0; i<num; i++){
-            cew[i] = new CalculateEmployeeWage();
-            cew[i].totalWage();
+            ewb[i] = new EmpWageBuilder();
+            ewb[i].totalWage();
         }
 
 
