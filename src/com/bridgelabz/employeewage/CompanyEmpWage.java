@@ -8,6 +8,10 @@ public class CompanyEmpWage{
     int totalWorkDay = 0;
     int totalWorkHour = 0;
 
+    int dayCount = 1;
+    int hourCount = 0;
+    int dayPresent = 0;
+
     int totalWage =0;
 
     public String getCompanyName() {
@@ -56,6 +60,18 @@ public class CompanyEmpWage{
 
     public void setTotalWorkHour(int totalWorkHour) {
         this.totalWorkHour = totalWorkHour;
+    }
+
+    public void setDayCount(int dayCount) {
+        this.dayCount = dayCount;
+    }
+
+    public void setHourCount(int hourCount) {
+        this.hourCount = hourCount;
+    }
+
+    public void setDayPresent(int dayPresent) {
+        this.dayPresent = dayPresent;
     }
 
     public void setTotalWage(int totalWage) {

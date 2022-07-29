@@ -95,6 +95,8 @@ public class EmpWageBuilder implements WageCalculate{
 
             company.setTotalWage(totalWage);
             dayCount = WageCalculate.dayCount;
+            company.setHourCount(hourCount);
+            company.setDayPresent(dayPresent);
             hourCount = WageCalculate.hourCount;
             dayPresent = WageCalculate.dayPresent;
 

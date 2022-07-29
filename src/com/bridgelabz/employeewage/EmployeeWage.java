@@ -15,7 +15,6 @@ public class EmployeeWage {
 
         empWageBuilder.addDetails(numberOfCompanies);
 
-
         empWageBuilder.totalWage();
     }
 }
