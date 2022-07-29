@@ -1,15 +1,14 @@
 package com.bridgelabz.employeewage;
 
-public class EmpWageBuilder {
+public class EmpWageBuilder implements WageCalculate{
 
-//    CompanyEmpWage[] arr = new CompanyEmpWage[arrayLength];
-
+    @Override
     public void totalWage(CompanyEmpWage[] arr){
 
-        int dayCount = 1;
-        int hourCount = 0;
-        int totalWage = 0;
-        int dayPresent = 0;
+        int dayCount = WageCalculate.dayCount;
+        int hourCount = WageCalculate.hourCount;
+        int totalWage = WageCalculate.totalWage;
+        int dayPresent = WageCalculate.dayPresent;
 
         for(int i = 0 ; i<arr.length;i++) {
             while (dayCount <= arr[i].totalWorkDay && hourCount <= arr[i].totalWorkHour) {
@@ -57,9 +56,10 @@ public class EmpWageBuilder {
                     "earn wages: " + totalWage +"\n");
 
             arr[i].setTotalWage(totalWage);
-            dayCount = 1;
-            dayPresent =0 ;
-            hourCount = 0 ;
+            dayCount = WageCalculate.dayCount;
+            hourCount = WageCalculate.hourCount;
+            dayPresent = WageCalculate.dayPresent;
+
         }
 
     }
