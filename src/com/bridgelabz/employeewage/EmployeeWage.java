@@ -14,7 +14,7 @@ public class EmployeeWage {
         int numberOfCompanies = sc.nextInt();
 
         empWageBuilder.addDetails(numberOfCompanies);
-
-        empWageBuilder.totalWage();
+        empWageBuilder.calculateTotalWage();
+        empWageBuilder.getTotalWage();
     }
 }

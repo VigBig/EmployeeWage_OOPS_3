@@ -41,7 +41,7 @@ public class EmpWageBuilder implements WageCalculate{
 
     }
     @Override
-    public void totalWage(){
+    public void calculateTotalWage(){
 
         int dayCount = WageCalculate.dayCount;
         int hourCount = WageCalculate.hourCount;
@@ -86,13 +86,6 @@ public class EmpWageBuilder implements WageCalculate{
                 dayCount++;
             }
 
-
-            System.out.println("For company " + company.companyName + ". \n" +
-                    "In one month of " + (dayCount - 1) + " working days, \n"
-                    + "employees present for " + dayPresent + " days and \n"
-                    + "worked for " + hourCount + " hours. \n" +
-                    "earn wages: " + totalWage +"\n");
-
             company.setTotalWage(totalWage);
             dayCount = WageCalculate.dayCount;
             company.setHourCount(hourCount);
@@ -103,4 +96,20 @@ public class EmpWageBuilder implements WageCalculate{
         }
 
     }
+    @Override
+    public void getTotalWage(){
+        System.out.println("*******************************************");
+
+        for(CompanyEmpWage company:companyEmpWageList) {
+            System.out.println("For company " + company.companyName + ". \n" +
+                    "In one month of " + company.totalWorkDay + " working days:\n"
+                    + "employees present for " + company.dayPresent + " days and \n"
+                    + "worked for " + company.hourCount + " hours \n" +
+                    "earn total wages of : " + company.totalWage + "\n");
+        }
+
+        System.out.println("*******************************************");
+
+    }
+
 }
