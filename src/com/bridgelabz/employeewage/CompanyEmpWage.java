@@ -10,6 +10,54 @@ public class CompanyEmpWage{
 
     int totalWage =0;
 
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public int getWagePerHour() {
+        return wagePerHour;
+    }
+
+    public void setWagePerHour(int wagePerHour) {
+        this.wagePerHour = wagePerHour;
+    }
+
+    public int getFullDayHour() {
+        return fullDayHour;
+    }
+
+    public void setFullDayHour(int fullDayHour) {
+        this.fullDayHour = fullDayHour;
+    }
+
+    public int getPartDayHour() {
+        return partDayHour;
+    }
+
+    public void setPartDayHour(int partDayHour) {
+        this.partDayHour = partDayHour;
+    }
+
+    public int getTotalWorkDay() {
+        return totalWorkDay;
+    }
+
+    public void setTotalWorkDay(int totalWorkDay) {
+        this.totalWorkDay = totalWorkDay;
+    }
+
+    public int getTotalWorkHour() {
+        return totalWorkHour;
+    }
+
+    public void setTotalWorkHour(int totalWorkHour) {
+        this.totalWorkHour = totalWorkHour;
+    }
+
     public void setTotalWage(int totalWage) {
         this.totalWage = totalWage;
     }
@@ -19,21 +67,6 @@ public class CompanyEmpWage{
 
     }
 
-    CompanyEmpWage(String companyName,int wagePerHour,int fullDayHour,int partDayHour,int totalWorkDay,int totalWorkHour){
-        this.companyName = companyName;
-
-        this.wagePerHour =wagePerHour;
-
-        this.fullDayHour =fullDayHour;
-
-        this.partDayHour=partDayHour;
-
-        this.totalWorkDay=totalWorkDay;
-
-        this.totalWorkHour =totalWorkHour;
-
-
-    }
 
 
 }

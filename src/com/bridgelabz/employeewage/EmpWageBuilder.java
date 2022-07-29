@@ -1,17 +1,55 @@
 package com.bridgelabz.employeewage;
 
-public class EmpWageBuilder implements WageCalculate{
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
+public class EmpWageBuilder implements WageCalculate{
+    Scanner sc = new Scanner(System.in);
+
+    List<CompanyEmpWage> companyEmpWageList = new ArrayList<>();
+
+    public void addDetails(int listSize){
+
+        for(int i=0; i<listSize;i++){
+
+            CompanyEmpWage companyEmpWage = new CompanyEmpWage();
+            System.out.println("Enter Company "+ (i+1) +" Details:");
+
+            System.out.println("Enter Company Name:");
+            String companyName = sc.next();
+            companyEmpWage.setCompanyName(companyName);
+            System.out.println("Enter Wage per Hour:");
+            int wagePerHour = sc.nextInt();
+            companyEmpWage.setWagePerHour(wagePerHour);
+            System.out.println("Enter Hours for Full Day's work:");
+            int fullDayHour = sc.nextInt();
+            companyEmpWage.setFullDayHour(fullDayHour);
+            System.out.println("Enter Hours for Part Time's work:");
+            int partDayHour = sc.nextInt();
+            companyEmpWage.setPartDayHour(partDayHour);
+            System.out.println("Enter Total No. of Working Days in a Month:");
+            int totalWorkDay = sc.nextInt();
+            companyEmpWage.setTotalWorkDay(totalWorkDay);
+            System.out.println("Enter Total No. of Working Hours in a Month:");
+            int totalWorkHour = sc.nextInt();
+            companyEmpWage.setTotalWorkHour(totalWorkHour);
+
+            companyEmpWageList.add(companyEmpWage);
+
+        }
+
+    }
     @Override
-    public void totalWage(CompanyEmpWage[] arr){
+    public void totalWage(){
 
         int dayCount = WageCalculate.dayCount;
         int hourCount = WageCalculate.hourCount;
         int totalWage = WageCalculate.totalWage;
         int dayPresent = WageCalculate.dayPresent;
 
-        for(int i = 0 ; i<arr.length;i++) {
-            while (dayCount <= arr[i].totalWorkDay && hourCount <= arr[i].totalWorkHour) {
+        for(CompanyEmpWage company: companyEmpWageList) {
+            while (dayCount <= company.totalWorkDay && hourCount <= company.totalWorkHour) {
 
                 int dailyWage = 0;
                 int attendance = (int) (Math.random() * 10) % 3;
@@ -19,22 +57,22 @@ public class EmpWageBuilder implements WageCalculate{
                 switch (attendance) {
                     case 1:
 
-                        if(hourCount + arr[i].fullDayHour <= arr[i].totalWorkHour){
+                        if(hourCount + company.fullDayHour <= company.totalWorkHour){
 
 //                            System.out.println("Employee is present Full Time");
-                            hourCount = hourCount + arr[i].fullDayHour;
-                            dailyWage = arr[i].wagePerHour * arr[i].fullDayHour;
+                            hourCount = hourCount + company.fullDayHour;
+                            dailyWage = company.wagePerHour * company.fullDayHour;
                             dayPresent++;
 
                         }
                         break;
                     case 2:
 
-                        if(hourCount + arr[i].partDayHour <= arr[i].totalWorkHour){
+                        if(hourCount + company.partDayHour <= company.totalWorkHour){
 
 //                            System.out.println("Employee is present Part Time");
-                            hourCount = hourCount + arr[i].partDayHour;
-                            dailyWage = arr[i].wagePerHour * arr[i].partDayHour;
+                            hourCount = hourCount + company.partDayHour;
+                            dailyWage = company.wagePerHour * company.partDayHour;
                             dayPresent++;
 
                         }
@@ -49,13 +87,13 @@ public class EmpWageBuilder implements WageCalculate{
             }
 
 
-            System.out.println("For company " + arr[i].companyName + ". \n" +
+            System.out.println("For company " + company.companyName + ". \n" +
                     "In one month of " + (dayCount - 1) + " working days, \n"
                     + "employees present for " + dayPresent + " days and \n"
                     + "worked for " + hourCount + " hours. \n" +
                     "earn wages: " + totalWage +"\n");
 
-            arr[i].setTotalWage(totalWage);
+            company.setTotalWage(totalWage);
             dayCount = WageCalculate.dayCount;
             hourCount = WageCalculate.hourCount;
             dayPresent = WageCalculate.dayPresent;
